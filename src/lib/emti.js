@@ -575,7 +575,22 @@ class OrthographicCamera extends Camera {
 	 */
 	constructor(x, y, width, height, near, far) {
 		super();
+		this.x = x;
+		this.y = y;
+		this.width = width;
+		this.height = height;
+		this.near = near;
+		this.far = far;
 		this.projectionMatrix.ortho(x, width, y, height, near, far);
+	}
+
+	/**
+	 *
+	 */
+	update() {
+		this.projectionMatrix.identity();
+		this.projectionMatrix.ortho(this.x, this.width, this.y, this.height, this.near, this.far);
+		//this.projectionMatrix.lookAt(this.x, this.y, this.z, this.xTo, this.yTo, this.zTo, 0, 0, 1);
 	}
 
 }
