@@ -1,20 +1,12 @@
 import * as EMTI from './lib/emti.js';
+import { scene, camera, renderer } from './setup.js';
+import { Sprite } from './Sprite.js';
 
-const WIDTH = 240;
-const HEIGHT = 135;
-
-const scene = new EMTI.Scene();
-const camera = new EMTI.OrthographicCamera(0, 0, WIDTH, HEIGHT, -50, 50);
-const renderer = new EMTI.WebGLRenderer({ width: WIDTH, height: HEIGHT });
-
-const box = new EMTI.PlaneGeometry(8, 8);//.center();
-const texture = new EMTI.Texture("img/spritesheet.png", { noMipmaps: true });
-const material = new EMTI.TextureMaterial(texture);
-const mesh = new EMTI.Mesh(box, material);
-scene.add(mesh);
+const sprSnakeHead = new Sprite(0, 0);
+scene.add(sprSnakeHead);
 
 renderer.setAnimationLoop(() => {
 	camera.update();
-	//mesh.position.x += 0.1;
+	sprSnakeHead.position.x += 0.1;
 	renderer.render(scene, camera);
 });
