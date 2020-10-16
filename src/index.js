@@ -44,12 +44,13 @@ for (let x = 0; x < 15; x++) {
 	}
 }
 
-sprSnakeHead.position.set(16, 8*5, 1);
-scene.add(sprSnakeHead);
-sprSnakeHead.changeTo(sprSnakeTail);
+const snake = sprSnakeTail.instantiate();
+snake.position.set(16, 8*5, 1);
+scene.add(snake);
+snake.changeTo(sprSnakeHead);
 
 renderer.setAnimationLoop(() => {
 	camera.update();
-	sprSnakeHead.position.x += 0.1;
+	snake.position.x += 0.1;
 	renderer.render(scene, camera);
 });

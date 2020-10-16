@@ -16,10 +16,11 @@ export class Sprite extends EMTI.Mesh {
 			.scaleCoords(width / TEXTURE_WIDTH, height / TEXTURE_HEIGHT)
 			.shiftCoords(x / TEXTURE_WIDTH, y / TEXTURE_HEIGHT);
 		super(plane, material);
+		this.args = arguments;
 	}
 
 	instantiate(x, y) {
-		const mesh = this.clone();	// If you realy want a Sprite, create overiding method
+		const mesh = new Sprite(...this.args);
 		mesh.position.set(x, y, 0);
 		return mesh;
 	}
